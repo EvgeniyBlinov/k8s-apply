@@ -1,0 +1,6 @@
+name: default
+namespace: default
+accounts:
+  - name: super-admin
+    role: cluster-admin
+    #namespace: default
