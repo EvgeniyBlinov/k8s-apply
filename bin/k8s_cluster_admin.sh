@@ -23,17 +23,17 @@ metadata:
   name: ${KUBE_SERVICEACCOUNT}
   namespace: ${KUBE_NAMESPACE}
 ---
-kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
   name: ${KUBE_ROLE_NAME}-${KUBE_SERVICEACCOUNT}
   namespace: ${KUBE_NAMESPACE}
-subjects:
-- kind: ServiceAccount
-  name: ${KUBE_SERVICEACCOUNT}
-  namespace: ${KUBE_NAMESPACE}
 roleRef:
-  kind: Role
-  name: ${KUBE_ROLE_NAME}
   apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: ${KUBE_SERVICEACCOUNT}
+    namespace: kube-system
 EOF
