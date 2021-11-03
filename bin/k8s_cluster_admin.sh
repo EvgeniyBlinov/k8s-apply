@@ -13,9 +13,6 @@ KUBE_NAMESPACE="${KUBE_NAMESPACE:-default}"
 KUBE_SERVICEACCOUNT="${KUBE_SERVICEACCOUNT:-${KUBE_NAMESPACE}-admin}"
 KUBE_ROLE_NAME="${KUBE_ROLE_NAME:-admin}"
 
-
-kubectl -n "${KUBE_NAMESPACE}" apply -f "${ROOT_PATH}/templates/k8s/account/role-${KUBE_ROLE_NAME}.yml"
-
 kubectl apply -f - <<EOF
 apiVersion: v1
 kind: ServiceAccount
